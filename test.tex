@@ -1,72 +1,536 @@
-% !TEX TS-program = pdflatex
-% !TEX encoding = UTF-8 Unicode
+\documentclass[english,aps,onecolumn]{revtex4-1}
 
-% This is a simple template for a LaTeX document using the "article" class.
-% See "book", "report", "letter" for other types of document.
-
-\documentclass[11pt]{article} % use larger type; default would be 10pt
-
-\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
-
-%%% Examples of Article customizations
-% These packages are optional, depending whether you want the features they provide.
-% See the LaTeX Companion or other references for full information.
-
-%%% PAGE DIMENSIONS
-\usepackage{geometry} % to change the page dimensions
-\geometry{a4paper} % or letterpaper (US) or a5paper or....
-% \geometry{margin=2in} % for example, change the margins to 2 inches all round
-% \geometry{landscape} % set up the page for landscape
-%   read geometry.pdf for detailed page layout information
-
-\usepackage{graphicx} % support the \includegraphics command and options
-
-% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
-
-%%% PACKAGES
-\usepackage{booktabs} % for much better looking tables
-\usepackage{array} % for better arrays (eg matrices) in maths
-\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
-\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
-\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
-% These packages are all incorporated in the memoir class to one degree or another...
-
-%%% HEADERS & FOOTERS
-\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
-\pagestyle{fancy} % options: empty , plain , fancy
-\renewcommand{\headrulewidth}{0pt} % customise the layout...
-\lhead{}\chead{}\rhead{}
-\lfoot{}\cfoot{\thepage}\rfoot{}
-
-%%% SECTION TITLE APPEARANCE
-\usepackage{sectsty}
-\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
-% (This matches ConTeXt defaults)
-
-%%% ToC (table of contents) APPEARANCE
-\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
-\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
-\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
-\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
-
-%%% END Article customizations
-
-%%% The "real" document content comes below...
-
-\title{Brief Article}
-\author{The Author}
-%\date{} % Activate to display a given date or no date (if empty),
-         % otherwise the current date is printed 
+\usepackage{enumerate}
+\usepackage{amsmath,graphicx}         
+\usepackage{bm}        
+\usepackage{geometry}   
+\usepackage{titlesec}   
+\usepackage{amsfonts, amssymb,multirow}
+\usepackage{braket}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}  
+\renewcommand{\normalsize}{\fontsize{13pt}{\baselineskip}\selectfont}
+\renewcommand{\baselinestretch}{2} % ÐÐ¾à
+\thispagestyle{empty}
+\setlength{\baselineskip}{10pt}
 
 \begin{document}
-\maketitle
+\center{\bf \LARGE Solution 2 for 2020$\sim$ 2021 USTC class \\
+`Physics of Quantum Information'}
 
-\section{First section}
+\vspace{0.5cm}
 
-Your text goes here.
+\center{Shu-ming Hu, Qing Zhou and Kai Chen}
 
-\subsection{A subsection}
+\vspace{0.5cm}
 
-More text.
+\center{\em National Laboratory for Physical Sciences at Microscale and Department of Modern Physics, University of Science and Technology of China, Hefei, 230026, P.R. China}
+
+\vspace{1cm}
+
+\begin{enumerate}[1.]
+
+%\item Suppose Bob is given a quantum state chosen from a set $|\psi_1\rangle, \cdots, |\psi_m\rangle$ of linearly independent states. Construct a POVM $\{E_1,E_2,\cdots, E_{m+1}\}$ such that if outcome $E_i$ occurs, $1\leq i\leq m$, then Bob knows with certainty that he was given the state $|\psi_i\rangle$.
+
+%\textbf{Answer:}\\
+%As $|\psi_1\rangle, \cdots, |\psi_m\rangle$ are linearly independent, we have $|\psi_i\rangle = \alpha_i |\phi_i\rangle + \sum_{j \neq i}^{m}\beta_{ij}|\psi_j\rangle$, where $ \alpha_i \neq 0$ and $\langle\psi_j|\phi_i\rangle = 0$ for $i \neq j$.\\
+%Now we show the how to constract $|\phi_i\rangle$: \\
+%Assume $\{b_j\}_{ j = 1}^m\ (j \neq i)$ is the orthonormal bases of the subspace formed by $\{|\psi_j\rangle\}_{ j = 1}^m\ (j \neq i)$.
+%$$\alpha_i|\phi_i\rangle = |\psi_i\rangle - \sum_{j \neq i}^m \langle b_j|\psi_i\rangle|b_j\rangle.$$
+%Take $E_i' = |\phi_i\rangle\langle\phi_i|$ for $i \leq n$, then $Tr[E_i' |\psi_j\rangle\langle\psi_j|] \neq 0$ iff $i = j$, meaning that if outcome $E_i'$ occurs, $1\leq i\leq m$, then Bob knows with certainty that he was given the state $|\psi_i\rangle$.\\
+%Denote $E_{sum} = \sum_i^m E_i'$, $E_{i + 1}' = I - E_{sum}$ should be positive. If the maximal eigenvalue of $E_{sum}$ is $\lambda$, $E_{m + 1} = I - \frac{1}{\lambda}\sum_{i = 1}^m E_i'$ is positive. \\
+%Thus the POVM in the following is what we want:
+%$$E_i = \frac{1}{\lambda}E_i', \quad 1 \leq i \leq m, \quad E_{m + 1} = I - \sum_1^m E_i.$$
+
+
+%%%%%%%%%
+%% Problem 1
+%%%%%%%%%
+\item Please describe the EPR paradox introduced by Einstein, Podolsky, Rosen at 1935, and explain the contradiction between quantum theory and local realism theory.
+
+\textbf{Answer}:
+Assumption by local realism theory:
+\begin{enumerate}[(a).]
+	\item Locality: If two measurements are performed in space-like separated locations, their outcomes should not be causal correlated.
+	\item Realism: Every element of the physical reality must have a counter part in the physical theory.
+\end{enumerate}
+Contraction: In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality.
+
+Consider that Alice and Bob share a singlet state $\psi^-=\frac{1}{\sqrt{2}}(\ket{10}-\ket{01})$, once Alice obtains a measurement outcome by measuring particle along arbitrary direction, she could correctly predict the corresponding  observable value for Bob's particle, and all observables can be predicted, they should have definite values. Following the realism assumption, every observable corresponding Bob's particle, such as $\sigma_x^B, \sigma_y^B, \sigma_z^B$, is a physical realism element. While following quantum theory, only commutative observables may have eigenvalues simultaneously, i.e. $\sigma_x^B, \sigma_y^B, \sigma_z^B$ can't have definite values simultaneously.
+
+%%%%%%%%%
+%% Problem 2
+%%%%%%%%%
+\item
+For the  singlet state $\ket{\psi^{-}}=\frac{1}{\sqrt{2}}(\ket{10}-\ket{01})$, prove that  Alice and Bob's outcomes are always anti-correlated when they measure two particles respectively along the same direction.
+
+\textbf{Answer}:
+Refer to the Box 2.7 on the  page of 113 of "Quantum computation and quantum information" by Nielsen.
+
+
+%%%%%%%%%%
+%% Problem 3
+%%%%%%%%%%
+\item PPT(Positive Partial Transposition) criterion is a strong separability criterion for quantum state, which is very convenient and practical for entanglement detection.
+	\begin{enumerate}[(1)]
+	\item Describe the PPT (Positive Partial Transposition) criterion and the realignment criterion.
+	\item For the 2-qubit state $\rho = p \ket{\phi^-}\bra{\phi^-} + (1-p) \frac{\mathbb{I}}{4}$, where, $0\leq p\leq1$, $\ket{\phi^-}=\frac{\ket{00}-\ket{11}}{\sqrt{2}}$, calculate the $p$'s lower bound when $\rho$ is entangled state using PPT criterion and realignment criterion respectively.
+	\end{enumerate}
+
+\textbf{Answer}:
+\begin{enumerate}[(1)]
+	\item
+PPT criterion reads:
+If $\rho$ is separable, then the partial transpose $\rho^{T_A}$ has no negative eigenvalues. \\
+%PPT is sufficient for the $2\otimes 2$ and $2\otimes 3$ (therefore $3\otimes 2$) cases.\\
+Realignment criterion reads:
+For any bipartite separable state $\rho$, $||\tilde{\rho}|| \leq 1$, where $||\tilde{\rho}||$ is the sum of all the singular values of $\tilde{\rho}$, $\tilde{\rho}$ is the realignment of $\rho$.
+	\item
+$$
+\rho=
+\begin{pmatrix}
+\frac{1+p}{4} & 0 & 0 & -\frac{p}{2} \\
+0 & \frac{1-p}{4} & 0 & 0 \\
+0 & 0 & \frac{1-p}{4} & 0 \\
+-\frac{p}{2} & 0 & 0 & \frac{1+p}{4}
+\end{pmatrix}
+$$
+then
+
+$$
+\rho^{T_A} =
+\begin{pmatrix}
+\frac{1+p}{4} & 0 & 0 & 0 \\
+0 & \frac{1-p}{4} & -\frac{p}{2} & 0 \\
+0 & -\frac{p}{2} & \frac{1-p}{4} & 0 \\
+0 & 0 & 0 & \frac{1+p}{4}
+\end{pmatrix}
+$$
+
+The eigenvalues of $\rho^{T_A}$ are $\left\{\frac{1}{4} (1-3 p),\frac{p+1}{4},\frac{p+1}{4},\frac{p+1}{4}\right\}$.\\
+If $\rho$ is entangled, $\rho^{T_A}$ has negative eigenvalues, then we get $1\geq p > \frac{1}{3}$
+
+$$
+\tilde{\rho}=
+\begin{pmatrix}
+\frac{1+p}{4} & 0 & 0 & \frac{1-p}{4} \\
+0 & -\frac{p}{2} & 0 & 0 \\
+0 & 0 & -\frac{p}{2} & 0 \\
+\frac{1-p}{4} & 0 & 0 & \frac{1+p}{4}
+\end{pmatrix}
+$$
+
+The singular values of $\tilde{\rho}$ are $\left\{\frac{1}{2} ,\frac{p}{2},\frac{p}{2},\frac{p}{2}\right\}$,
+then $||\tilde{\rho}|| = \frac{3p+1}{2}$.
+If $\rho$ is entangled, $||\tilde{\rho}|| > 1$, then we get $1\geq p > \frac{1}{3}$.
+
+ \end{enumerate}
+
+%%%%%%%%%%
+%% Problem 4
+%%%%%%%%%%
+\item
+	\begin{enumerate}[(1)]
+\item Calculate the amount of entanglement of the state  $\rho=\lambda\ket{\phi^+}\bra{\phi^+}+(1-\lambda)\ket{\psi^+}\bra{\psi^+},(0\leq\lambda\leq1)$ with negativity measure,
+where $\ket{\phi^+}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}, \ket{\psi^+}=\frac{1}{\sqrt{2}}(\ket{01}+\ket{10})$.
+\item Derive the value scope for $\lambda$ when the state $\rho$ is entangled using negativity measure.
+	\end{enumerate}
+
+\textbf{Answer}:
+	\begin{enumerate}[(1)]
+	\item
+$$
+\rho=\frac{1}{2}
+\begin{pmatrix}
+\lambda & 0 & 0 & \lambda \\
+0 & 1-\lambda & 1-\lambda & 0 \\
+0 & 1-\lambda & 1-\lambda & 0 \\
+\lambda & 0 & 0 & \lambda
+\end{pmatrix}
+$$
+then
+
+$$
+\rho^{T_A} =\frac{1}{2}
+\begin{pmatrix}
+\lambda & 0 & 0 & 1-\lambda \\
+0 & 1-\lambda &\lambda & 0 \\
+0 & \lambda & 1-\lambda & 0 \\
+1-\lambda & 0 & 0 &\lambda
+\end{pmatrix}
+$$
+
+The eigenvalues of $\rho^{T_A}$ are $\left\{\frac{1}{2},\frac{1}{2},\frac{2\lambda-1}{2},\frac{1-2\lambda}{2}\right\}$,and the singular values are $\left\{\frac{1}{2},\frac{1}{2},|\frac{2\lambda-1}{2}|,|\frac{1-2\lambda}{2}|\right\}$. So, the amount of entanglement of $\rho$ is: $$ N(\rho)=\frac{||\rho^{T_A}||-1}{2}=|\lambda-\frac{1}{2}| $$
+
+
+\item
+If $\rho$ is an entanglement state,
+$$N(\rho)=\frac{||\rho^{T_A}||-1}{2}=|\lambda-\frac{1}{2}|>0$$
+when $\lambda \neq 1/2$, $\rho$ is entangled.
+\end{enumerate}
+
+
+%%%%%%%%%%%
+%% Problem 5
+%%%%%%%%%%%
+\item
+%An entanglement witness(EW) is a functional which distinguishes a specific entangled state from separable ones.
+	\begin{enumerate}[(1)]
+	\item Describe the definition of the Entanglement Witness (EW).
+	\item For the three-qubit \textbf{GHZ} state,
+     $$|\textbf{GHZ}\rangle=\frac{1}{\sqrt{2}}(|000\rangle+|111\rangle)$$
+     prove that the entanglement witness $\mathcal{W} = \frac{1}{2} \textbf{I} - |GHZ\rangle\langle GHZ|$ detects three-qubit entanglement around it.
+    \item A mixed state $\rho = (1-p)\frac{\textbf{I}}{8} + p |GHZ\rangle\langle GHZ|$ ($0 \le p \le1$), calculate the $p$'s upper bound when $\rho$ is entangled state using the EW given above.
+	%\item Choose a appropriate measurement operator and recalculate the question 3.(2) with Entanglement Witness(EW) that derived form the CHSH Inequality.
+	\end{enumerate}
+
+
+\textbf{Answer}:
+	\begin{enumerate}[(1)]
+	\item
+An entanglement witness is a functional which distinguishes a specific entangled state from separable ones.
+$W$ can be called an entanglement witness, if it satisfies that\\
+(a). $W$ has at least one negative eigenvalue;\\
+(b). For any separable state $\rho_{AB}$, $Tr(W \rho_{AB}) \geq 0$
+    \item
+    To prove that $\mathcal{W}$ is an EW, one needs to show that $Tr(\rho_{sep} \mathcal{W}) \ge 0$ for all separable states. That is, for all separable states, $Tr(\rho_{sep} |GHZ\rangle\langle GHZ|) \le \frac{1}{2}$. The maximum value of $Tr(\rho_{sep} |GHZ\rangle\langle GHZ|)$ is given by the square of the Schmidt coefficient which is maximal over all possible bipartite partitions($1|23, 2|13, 3|12$) of $|GHZ\rangle$. Then it is easy to calculate
+    $$max_{\rho_{sep}} Tr(\rho_{sep} |GHZ\rangle\langle GHZ|) = 1/2.$$
+    So
+    $$Tr(\rho_{sep} \mathcal{W}) \ge 0.$$
+    The entanglement witness $\mathcal{W} = \frac{1}{2} \textbf{I} - |GHZ\rangle\langle GHZ|$ detects three-qubit entanglement around it.
+    \item
+    $\rho$ is an entangled state, them
+    $$Tr(\rho \mathcal{W}) = \frac{1-p}{2} - \frac{1-p}{8} - \frac{p}{2} < 0, $$
+    $$ p > \frac{3}{7}.$$
+     \end{enumerate}
+
+%%%%%%%%%%%%
+%% Problem 6
+%%%%%%%%%%%%
+\item
+	\begin{enumerate}[(1)]
+    \item What conditions should a good entanglement measures meet?
+    \item Describe the definition of distillable entanglement and entanglement cost and their relationship.
+    \item Write down the monogamy of entanglement and describe its physical meanings.
+	\end{enumerate}
+
+\textbf{Answer}:
+	\begin{enumerate}[(1)]
+    \item A good entanglement measure $E(\cdot)$ should satisfy that,
+	\begin{enumerate}[(a)]
+        \item For any separable state $\rho$, $E(\rho)=0$;
+        \item No increase under LOCC, i.e. $E(\Lambda_{LOCC}(\rho)) \leq E(\rho)$;
+        \item Continuity, i.e. $E(\rho)-E(\sigma) \rightarrow 0$, when $||\rho-\sigma|| \rightarrow 0$;
+        \item Convexity, i.e. $E(\lambda\rho + (1-\lambda) \sigma) \leq \lambda E(\rho)+ (1-\lambda) E(\sigma)$;
+        \item Normalization, i.e. $E(P_+^d)=\log{d}$.
+
+	\end{enumerate}
+
+    \item Read the page 62, 63 in the lecture "QIP2019chapt\_2\_Kai Chen.pdf" for reference.
+
+    \item Monogamy of entanglement says that:\\
+    For any tripartite state of systems $A, B_1, B_2$ we have
+	$$E(A|B_1)+E(A|B_2) \leq E(A|B_1B_2).$$
+ 	If the above inequality holds in general, i.e. not only for qubits, then it can be immediately generalized by induction to the multipartite case:
+	$$
+	E(A|B_1)+E(A|B_2)+ \cdots +E(A|B_N) \leq E(A|B_1B_2 \cdots B_N).
+	$$
+
+	It means that if two qubits A and B are maximally quantumly correlated they cannot be correlated at all with a third qubit C. In general, there is a trade-off between the amount of entanglement between qubits A and B and the same qubit A and qubit C. Note that, in some cases, entanglement is not monogamay.
+	\end{enumerate}
+
+%%%%%%%%%%%%
+%% Problem 7
+%%%%%%%%%%%%
+\item
+  The four Bell states have the following mathematical expressions on the basis $\{0,1\}$ (the eigenstates of $\sigma_z$ ),
+   \begin{align*}
+      |\Phi^{\pm}\rangle&=\frac{1}{\sqrt{2}}(|00\rangle\pm|11\rangle)\\
+      |\Psi^{\pm}\rangle&=\frac{1}{\sqrt{2}}(|01\rangle\pm|10\rangle)
+    \end{align*}
+ \begin{enumerate}[(1)]
+ \item Prove that the four Bell states can be transformed to each other using single qubit rotations $\{I,\sigma_x,\sigma_y,\sigma_z\}$ .
+ \item Give the representation of the four Bell states on the basis $\{+,-\}$ (the eigenstates of $\sigma_x$ ).
+ \end{enumerate}
+
+ \textbf{Answer:}\\
+ \begin{enumerate}[(1)]
+   \item \begin{equation} \sigma_x=\left(
+                                                          \begin{array}{cc}
+                                                            0 & 1 \\
+                                                            1 & 0 \\
+                                                          \end{array}
+                                                        \right)
+, \sigma_y=\left(
+                                                          \begin{array}{cc}
+                                                           0 & -i \\
+                                                            i & 0 \\
+                                                          \end{array}
+                                                        \right), \sigma_z=\left(
+                                                          \begin{array}{cc}
+                                                            1 & 0 \\
+                                                            0 & -1 \\
+                                                          \end{array}
+                                                        \right)
+\end{equation}
+  \begin{equation}
+  \begin{split}
+  \Phi^+ &\left\{
+          \begin{array}{ll}
+             \xrightarrow{\sigma_x\otimes I}  |\Psi^+\rangle, &  \\
+             \xrightarrow{\sigma_y\otimes I}  -i|\Psi^-\rangle, & \\
+             \xrightarrow{\sigma_z\otimes I}  |\Phi^-\rangle, &
+          \end{array}
+        \right.               \\
+  \Phi^- &\left\{
+          \begin{array}{ll}
+             \xrightarrow{\sigma_x\otimes I}  -|\Psi^-\rangle, &  \\
+             \xrightarrow{\sigma_y\otimes I}  i|\Psi^+\rangle, & \\
+             \xrightarrow{\sigma_z\otimes I}  |\Phi^+\rangle, &
+          \end{array}
+        \right.               \\
+ \Psi^+ &\left\{
+          \begin{array}{ll}
+             \xrightarrow{\sigma_x\otimes I}  |\Phi^+\rangle, &  \\
+             \xrightarrow{\sigma_y\otimes I}  -i|\Phi^-\rangle, & \\
+             \xrightarrow{\sigma_z\otimes I}  |\Psi^-\rangle, &
+          \end{array}
+        \right.               \\
+\Psi^- &\left\{
+          \begin{array}{ll}
+             \xrightarrow{\sigma_x\otimes I}  -|\Phi^-\rangle, &  \\
+             \xrightarrow{\sigma_y\otimes I} i|\Phi^+\rangle, & \\
+             \xrightarrow{\sigma_z\otimes I}  |\Psi^+\rangle, &
+          \end{array}
+        \right.
+             \end{split}
+             \end{equation}
+   \item The single qubit transformation between the $\sigma_z$ basis and the $\sigma_x$ basis is
+    \begin{equation}
+      \begin{split}
+        |0\rangle & =\frac{1}{\sqrt{2}}(|+\rangle+|-\rangle),\\
+        |1\rangle & =\frac{1}{\sqrt{2}}(|+\rangle-|-\rangle).
+      \end{split}
+    \end{equation}
+   %$$H=\frac{1}{\sqrt{2}}\left(
+                         % \begin{array}{cc}
+                          %  1 & 1 \\
+                          %  1 & -1 \\
+                          %\end{array}
+                        %\right) $$
+   So,
+   \begin{equation}
+   \left\{
+     \begin{array}{ll}
+         |\Phi^+\rangle \xrightarrow{}  |\Phi^+\rangle=\frac{1}{\sqrt{2}}(|++\rangle+|--\rangle), &  \\
+         |\Phi^-\rangle \xrightarrow{}  |\Psi^+\rangle=\frac{1}{\sqrt{2}}(|+-\rangle+|-+\rangle), &  \\
+         |\Psi^+\rangle \xrightarrow{}  |\Phi^-\rangle=\frac{1}{\sqrt{2}}(|++\rangle-|--\rangle), &  \\
+         |\Psi^-\rangle \xrightarrow{}  -|\Psi^-\rangle=-\frac{1}{\sqrt{2}}(|+-\rangle-|-+\rangle), &
+     \end{array}
+   \right.
+   \end{equation}
+   \end{enumerate}
+
+%%%%%%%%%%%%%
+%% Problem 8
+%%%%%%%%%%%%%
+\item
+	\begin{enumerate}[(1)]
+	\item Describe the physical meanings of von Neumann entropy.
+	\item Prove that $S(\rho)\leq \log D$, where $D$ is the number of the non-zero eigenvalues of $\rho$.
+    %\item Prove that the von Neumann entropy always increases, or remains constant under projection measurement.
+    \item Prove the subadditivity of the von Neumann entropy
+        $$|S(A)-S(B)| \leq S(A,B) \leq S(A)+S(B)$$
+    \item Prove the concavity of the von Neumann entropy
+        $$S(\sum_i{p_i \rho_i}) \geq \sum_i{p_i S(\rho_i)}$$
+
+    \item Prove that the two body pure state $\ket{\psi_{AB}}$ is a entangled state if and only if $S(B|A) <0 $, in which $S(B|A)=S(B,A)-S(A)$, $S(\cdot)$ is the von Neumann entropy.
+	\end{enumerate}
+
+\textbf{Answer}:
+	\begin{enumerate}[(1)]
+	\item
+	 The von Neumann entropy quantizes the quantum information of each character of the quantum ensemble. When the signal $\rho$ is pure state, von Neumann entropy $S(\rho)$ is the information quantization of the quantum information source.
+	\item
+	$$S(\rho)=-tr(\rho \log \rho)=-\sum_i \lambda_i \log \lambda_i=\sum_{i=1}^D\lambda_i \log \frac{1}{\lambda_i} \leq \log(\sum_{i=1}^D\lambda_i\frac{1}{\lambda_i}),$$
+	in which the concavity of logarithmic function
+	$$\log(p_1 x_1+p_2 x_2) \geq p_1 \log x_1+ p_2 \log x_2$$
+	is used.
+	%\item
+	%Please read answer 13.10 at page 371 of Yong-De Zhang's {\it Principles of Quantum Information Physics} for reference.
+	
+
+    \item
+    Consider the relative entropy of $\rho_{AB}$ and $\rho_A \otimes \rho_B$
+    \begin{align*}
+    S(\rho_{AB}||\rho_A \otimes \rho_B)
+    &= tr(\rho_{AB} \log \rho_{AB}) - tr(\rho_{AB} \log(\rho_A \otimes \rho_B))\\
+    &= -S(\rho_{AB}) -tr(\rho_{AB} \log \rho_A) -tr(\rho_{AB} \log \rho_B)\\
+    &= -S(\rho_{AB})+S(\rho_A) +S(\rho_B)\\
+    &\geq 0
+    \end{align*}
+
+    So,
+     $$S(A,B) \leq S(A)+S(B)$$
+
+    Consider a purification of $\rho_{AB} = tr_C \ket{\phi}_{ABC} \bra{\phi}$,
+    apply subadditivity to $\rho_{BC}$, we can get that
+    $$ S(B,C) \leq S(B)+S(C).$$
+    Since $S(B,C)=S(A), S(C)=S(A,B),$ so we get that
+    $$ S(A,B) \geq S(A) - S(B).$$
+    Similarly, $S(A,B) \geq S(B) - S(A).$\\
+    So,  $$|S(A)-S(B)| \leq S(A,B)$$
+
+    \item
+     Apply subadditivity to
+     $$\rho_{AB} = \sum_i {p_i \rho_i \otimes \ket{i}\bra{i}_B}$$
+     we can get that
+
+     $$
+     S(\rho_{AB}) \leq S(\rho_A) + S(\rho_B) = S(\sum_i p_i \rho_i) + H(p_i)
+     $$
+
+     From the joint entropy theorem we can get that
+     $$
+     S(\rho_{AB}) = S(\sum_i {\rho_i \otimes p_i \ket{i}\bra{i}_B})
+             = \sum_i p_i S(\rho_i) +H(p_i)
+     $$
+    so
+    $$S(\sum_i{p_i \rho_i}) \geq \sum_i{p_i S(\rho_i)}$$
+
+    \item
+    Since $\ket{\psi_{AB}}$  is a pure state, so $S(A,B) = 0.$\\
+    If $\ket{\psi_{AB}}$ is an entangled state, then its Schmidt decomposition can be write as
+    $$\ket{\psi_{AB}}=\sum_i{\sqrt{p_i}\ket{i_A}\ket{i_B}}, i \geq 2$$
+    so $$\rho_A=\sum_i{p_i\ket{i_A}\bra{i_A}},$$
+     $$S(A)=- \sum_i{p_i \log{p_i}}>0,$$
+    so $$S(B|A)=S(A,B)-S(A)=-S(A) < 0$$
+	\end{enumerate}
+
+%%%%%%%%%%%%%%%
+%%% Problem 9
+%%%%%%%%%%%%%%%
+\item
+Prove that $|\psi^{-}\rangle=\frac{1}{\sqrt{2}}(|01\rangle-|10\rangle)$ is invariant under transformation $U(\theta,\vec{n})\otimes U(\theta,\vec{n})$, where $U(\theta,\vec{n})=e^{-\frac{i}{2}\theta\cdot\vec{n}\cdot\vec{\sigma}}$.
+
+\textbf{Answer:}\\
+\begin{gather}
+U(\theta,\vec{n})=e^{-\frac{i}{2}\theta\cdot\vec{n}\cdot\vec{\sigma}}=\cos \frac{\theta}{2}I-i\sin \frac{\theta}{2}\vec{n}\cdot\vec{\sigma}\notag\\
+U(\theta,\vec{n})\otimes U(\theta,\vec{n})=\cos^{2}\frac{\theta}{2}I\otimes I-i\sin \frac{\theta}{2}\cos \frac{\theta}{2}(n\cdot\vec{\sigma}_{B}+n\cdot\vec{\sigma}_{A})-\sin^{2}\frac{\theta}{2}(\vec{n}\cdot\vec{\sigma})_{A}\otimes (\vec{n}\cdot\vec{\sigma})_{B}.\notag
+\end{gather}
+then, we have
+\begin{gather}
+\cos^{2}\frac{\theta}{2}I\otimes I|\psi^{-}\rangle=\cos^{2}\frac{\theta}{2}|\psi^{-}\rangle\notag\\
+\sigma_{x}\otimes\sigma_{x}|\psi^{-}\rangle=\sigma_{y}\otimes\sigma_{y}|\psi^{-}\rangle=\sigma_{z}\otimes\sigma_{z}|\psi^{-}\rangle=-|\psi^{-}\rangle\notag\\
+(\vec{n}\cdot\vec{\sigma}_{A}+\vec{n}\cdot\vec{\sigma}_{B})|\psi^{-}\rangle=0\notag
+\end{gather}
+Hence, $U(\theta,\vec{n})\otimes U(\theta,\vec{n})|\psi^{-}\rangle=|\psi^{-}\rangle$.
+
+%%%%%%%%%%%%%%%%
+%% Problem 10
+%%%%%%%%%%%%%%%%
+\item
+The entropy of quantum state, expressed as a density matrix $\rho$, is $S(\rho)=-tr(\rho \log_{2}\rho)$; in terms of its eigenvalues $\lambda_{k}$, this is $S(\rho)=-\Sigma_{k}\lambda_{k}\log_{2}\lambda_{k}$. A state $\rho$ is a pure state if and only if $tr(\rho^{2})=1$. Prove that this is equivalent to $S(\rho)=0$. You
+may use the fact $\rho$ is a valid density matrix if and only if $tr(\rho)=1$ and $\rho$ is a positive operator (i.e. its
+eigenvalues are $\ge 0$).
+
+\textbf{Answer:}\\
+If $tr(\rho^{2})=1$,
+\begin{gather}
+\Sigma_{k}\lambda_{k}^{2}=\Sigma_{k}\lambda_{k}=1\notag
+\end{gather}
+Therefore,
+\begin{gather}
+\Sigma_{k}\lambda_{k}(\lambda_{k}-1)=0\notag
+\end{gather}
+Since $0\leq\lambda_{k}\leq 1, \forall k$, we know that $\lambda_{k}(\lambda_{k}-1)\leq 0$, and thus the only way for the above condition to be satisfied is for $\lambda_{k}=0,1,\forall k$, and thus $S(\rho)=0$ if and only if $\rho$ has a single eigenvalue of 1 with all other
+eigenvalues 0.
+\begin{gather}
+S(\rho)=-\Sigma_{k}\lambda_{k}\log_{2}\lambda_{k}=0\notag
+\end{gather}
+Since $0\leq\lambda_{k}\leq 1, \forall k$, we know that $\lambda_{k}\log_{2}\lambda_{k}\leq 0,\forall k$. Therefore, the only way for the above condition to be satisfied is for $\lambda_{k}=0,1,\forall k$, and thus $tr(\rho^{2})=1$.
+
+Therefore, for density matrices, $tr(\rho^{2})=1$ and $S(\rho)=0$ are equivalent statements.
+
+%%%%%%%%%%%%%%%%%%
+%%% Problem 11
+%%%%%%%%%%%%%%%%%%
+\item
+    For the 2-qubit state $\rho = p|\Psi^-\rangle \langle\Psi^{-}| + (1-p) \frac{\mathbb{I}}{4}$, where $0\leq p \leq1$, $|\Psi^-\rangle=\frac{|{01}\rangle-|{10}\rangle}{\sqrt{2}}$, calculate the EOF(Entanglement of Formation) of $\rho$.    
+    
+    \textbf{Answer}: \\
+    The square roots are $\left\{\frac{1-p}{4} ,\frac{1-p}{4},\frac{1-p}{4},\frac{1+3p}{4}\right\}$, so the concurrence of $\rho$ is $C(\rho)= max \{–0 ,\frac{3p-1}{2}\}$.
+    
+    If $p < \frac{1}{3} $, the EOF of state $\rho$ is $ E(C(\rho))= H(1)=0 $. \\
+    If $p > \frac{1}{3} $, the EOF of state $\rho$ is $ E(C(\rho))= H(\frac{1+\sqrt{1-(\frac{3p-1}{2})^{2}}}{2}) $.
+
+%%%%%%%%%%%%%%%%%%
+%% Problem 12
+%%%%%%%%%%%%%%%%%
+\item
+	Consider the state $|\psi\rangle = \frac{1}{\sqrt{2}}(|0\rangle_A|0\rangle_B + |1\rangle_A|1\rangle_B)$, $\rho_A = tr_B(|\psi\rangle\langle\psi|)$. Calculate the Von Neumann entropy of $\rho_A$.
+
+	\textbf{Answer:}\\
+	\begin{equation}
+	\rho_A = \left(
+                                                          \begin{array}{cc}
+                                                            \frac{1}{2} & 0 \\
+                                                            0 & \frac{1}{2} \\
+                                                          \end{array}
+                                                           \right)   \notag
+    \end{equation}
+    $$S(\rho_A) = -(\frac{1}{2} log(\frac{1}{2}) + \frac{1}{2} log(\frac{1}{2}) )= 1$$
+
+
+%%%%%%%%%%%%%%%%
+%% Problem 13
+%%%%%%%%%%%%%%%%
+\item
+  Give a noisy entanglement state with purity $F$ for the singlet state $|\Psi^-\rangle$ ,
+  \begin{align*}
+     W_F&= F|\Psi^-\rangle\langle\Psi^-|+\frac{1-F}{3}|\Psi^+\rangle\langle\Psi^+| +\frac{1-F}{3}|\Phi^+\rangle\langle\Phi^+|+\frac{1-F}{3}|\Phi^-\rangle\langle\Phi^-| .
+    \end{align*}
+Supposing $F=\frac{3}{5}$, please design a two-way LOCC purification protocol that can obtain the singlet state $|\Psi^-\rangle$ with as high fidelity as possible from the above mixed state in five steps.
+
+\textbf{Answer:}\\
+  An arbitrary mixed two-partite state $\rho$ with fidelity $F=\langle \Psi^-|\rho|\Psi^-\rangle$ can be transformed to the symmetric Werner state with random bilateral rotations,  $$W_F = F|\Psi^-\rangle\langle\Psi^-|+\frac{1-F}{3}|\Psi^+\rangle\langle\Psi^+|
++\frac{1-F}{3}|\Phi^+\rangle\langle\Phi^+|+\frac{1-F}{3}|\Phi^-\rangle\langle\Phi^-|.$$
+ where $|\Psi^{\pm}\rangle=\frac{1}{\sqrt(2)}(\uparrow\downarrow\pm\downarrow\uparrow), |\Phi^{\pm}\rangle=\frac{1}{\sqrt(2)}(\uparrow\uparrow\pm\downarrow\downarrow)$ and $F=\langle \Psi^-|W_F|\Psi^-\rangle.$ \\
+Alice and Bob share two pairs of $W_F$ state, i.e. $W_{F12}$ and $W_{F34}$, with 1 and 3 in Alice's side, 2 and 4 in Bob's side. The purification protocol is:
+ \begin{enumerate}
+   \item Alice and Bob make unilateral transformation $\sigma_y$ (i.e. $\sigma_y\otimes I$) on their two pairs of $W_F$ state. We get the new state,  $$  W_F  \xrightarrow{\sigma_y\otimes I}W'_F = F|\Phi^+\rangle\langle\Phi^+|+\frac{1-F}{3}|\Phi^-\rangle\langle\Phi^-|
++\frac{1-F}{3}|\Psi^-\rangle\langle\Psi^-|+\frac{1-F}{3}|\Psi^+\rangle\langle\Psi^+|.$$
+   \item Alice and Bob perform the C-NOT operations on their two pair of $W'_F$ state with 1 and 2 as 'source' particles and 3 and 4 as 'target' particles. The transformation is shown as follow,
+       \begin{table}[!htp]
+\centering\renewcommand\arraystretch{0.5}
+  \begin{tabular}{c c c c}
+
+                   % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+                   \multicolumn{2}{c}{Before}   &  \multicolumn{2}{c}{After(n.c. = no change)}  \\
+                   \hline
+                  Source & Target & Source & Target \\
+                  \hline
+                   $\Phi^{\pm}$ & $\Phi^+$ & n.c. & n.c.  \\
+                   $\Psi^{\pm}$ & $\Phi^+$ & n.c & $\Psi^+$ \\
+                    $\Psi^{\pm}$ & $\Psi^+$ & n.c & $\Phi^+$ \\
+                    $\Phi^{\pm}$ & $\Psi^+$ & n.c & n.c \\
+                    $\Phi^{\pm}$ & $\Phi^-$ & $\Phi^{\mp}$ & n.c \\
+                    $\Psi^{\pm}$ & $\Phi^-$ & $\Psi^{\mp}$ & $\Psi^-$ \\
+                    $\Psi^{\pm}$ & $\Psi^-$ & $\Psi^{\mp}$ & $\Phi^-$ \\
+                    $\Phi^{\pm}$ & $\Psi^-$ & $\Phi^{\mp}$ & n.c \\
+  \end{tabular}
+\end{table}
+then, measure two target particles along the $Z$ axis. If the target pair's $Z$ spins are parallel, keep the correspond source state; otherwise, discard the source state. As the measurements along the $Z$ axis can only distinguish $\Phi$ from $\Psi$ (but can't distinguish $-$ from $+$), we keep the 1, 3, 5, 7 rows' source states. %with probabilities $(F+\frac{1-F}{3})F$, $(\frac{1-F}{3}+\frac{1-F}{3})\frac{1-F}{3}$,
+ %$(F+\frac{1-F}{3})\frac{1-F}{3}$, $(\frac{1-F}{3}+\frac{1-F}{3})\frac{1-F}{3}$, respectively. We then get the new fidelity of $W'_F$ relative to $|\Phi^+\rangle$,
+ %\begin{align*}
+  % F'&=\frac{F^2+\frac{1-F}{3}\cdot\frac{1-F}{3}}{(F+\frac{1-F}{3})F+(\frac{1-F}{3}+\frac{1-F}{3})\frac{1-F}{3}+(F+\frac{1-F}{3})\frac{1-F}{3}+(\frac{1-F}{3}+\frac{1-F}{3})\frac{1-F}{3}}\\
+   % &=\frac{F^2+\frac{1}{9}(1-F)^2}{F^2+\frac{2}{3}F(1-F)+\frac{5}{9}(1-F)^2}
+ %\end{align*}
+
+   \item For $F = \frac{3}{5}$, we get a state $\rho = 0.62|\Phi^+\rangle\langle\Phi^+| + 0.26|\Phi^-\rangle\langle\Phi^-| + 0.06|\Psi^+\rangle\langle\Psi^+| + 0.06|\Psi^-\rangle\langle\Psi^-|$, note that the main noise state is $|\Phi^- \rangle$ now. Change the bases into $\{|+\rangle, |-\rangle\}$, denote $|+\rangle$ as $|0'\rangle$ and $|-\rangle$ as $|1'\rangle$. We can rewrite $\rho =  0.62|\Phi'^{+}\rangle\langle\Phi'^{+}| + 0.26|\Psi'^{+}\rangle\langle\Psi'^{+}| + 0.06|\Phi'^{-}\rangle\langle\Phi'^{-}| + 0.06|\Psi'^{-}\rangle\langle\Psi'^{-}|$, repeat the step (b), $\rho$ changes into $\rho_1 = 0.68|\Phi'^{+}\rangle\langle\Phi'^{+}| + 0.13|\Psi'^{+}\rangle\langle\Psi'^{+}| + 0.13|\Phi'^{-}\rangle\langle\Phi'^{-}| + 0.06|\Psi'^{-}\rangle\langle\Psi'^{-}|$. Go back to $\{|0\rangle, |1\rangle\}$ bases, $\rho_1 = 0.68|\Phi^+\rangle\langle\Phi^+| + 0.13|\Phi^-\rangle\langle\Phi^-| + 0.13|\Psi^+\rangle\langle\Psi^+| + 0.06|\Psi^-\rangle\langle\Psi^-|$, for which $F_1 = 0.68$.
+\end{enumerate}
+Repeat step (b) and (c), we can get $F_2 = 0.80$, $F_3 = 0.93$, etc.
+At last, the final state  can be converted back to a mostly $\Psi^-$ state by a unilateral $\sigma_y$ rotation.
+
+ \end{enumerate}
 
 \end{document}
